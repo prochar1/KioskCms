@@ -4,12 +4,11 @@
     public $data = [];
     public $title = '';
     public $description = '';
-    public $images = '';
     public $video = '';
     public $pdf = '';
     public $list = '';
-    public $files = '';
-    public $files_descriptions = '';
+    public $images = '';
+    public $images_descriptions = '';
     public $type = 'description';
     public $parent = '0';
     public $order = '0';
@@ -164,7 +163,6 @@
 
     function selectBox($value, $parent = "0", $isSublist = false)
     {
-        // if(!is_array($this->data)) return;
         $output = '';
         if (!$isSublist) {
             $output .= '<select name="parent" id="parent" class="form-select">';
@@ -186,7 +184,6 @@
                 $output .= ' &#45; ' . $row['title'] . ' (' . $row['order'] . ')';
                 $output .= '</option>';
                 $sublist = $this->selectBox($value, $row['id'], true);
-                // var_dump($sublist);
                 if (!empty(trim(strip_tags($sublist)))) {
                     $output .= str_replace('&#45;', '&#45;&#45;', $sublist);
                 }
@@ -211,14 +208,9 @@
         $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
         $dir_name_str = pathinfo($file_name, PATHINFO_DIRNAME);
         $file_name_str = pathinfo($file_name, PATHINFO_FILENAME);
-
-        // Replaces all spaces with hyphens. 
         $file_name_str = str_replace(' ', '-', $file_name_str);
-        // Removes special chars. 
         $file_name_str = preg_replace('/[^A-Za-z0-9\-\_]/', '', $file_name_str);
-        // Replaces multiple hyphens with single one. 
         $file_name_str = preg_replace('/-+/', '-', $file_name_str);
-
         $clean_file_name = $dir_name_str . '/' . $file_name_str . '.' . $file_ext;
 
         return $clean_file_name;
