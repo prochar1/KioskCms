@@ -17,6 +17,7 @@
 
     function __construct($id = null)
     {
+        if (!file_exists($this->dataFile)) return;
         $data = json_decode(file_get_contents($this->dataFile), true);
         $this->data = $data;
 
