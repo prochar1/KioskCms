@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'black';
+    src: url('../font/Roboto-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'bold';
+    src: url('../font/Roboto-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'regular';
+    src: url('../font/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+	-ms-content-zooming: none;
+    -ms-user-select: none;
+}
+html, body {
+	width: 1920px;
+	height: 1080px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-family: regular;
+	line-height: 2em;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+h1 {
+	margin: 0;
+	padding: 0;
+	height: 100px;
+}
+.lang {
+	display: none;
+}
+.col {
+	position: relative;
+	width: 521px;
+	height: 1080px;
+	padding: 45px;
+	padding-right: 0;
+	background: #f5f4ef;
+	float: left;
+}
+.content {
+	position: relative;
+	width: 1399px;
+	height: 1080px;
+	background: #d9d3c2;
+	float: left;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#nav {
+	padding: 10px 0;
+	border-top: 3px solid #d9d3c2;
+	border-bottom: 3px solid #d9d3c2;
+	width: 431px;
+	height: 91px;
+	margin: 40px 0;
+}
+#nav li {
+	float: left;
+	width: 33.333%;
+	text-align: center;
+}
+#nav li:first-child {
+	text-align: left;
+}
+#nav li:last-child {
+	text-align: right;
+}
+#nav li a {
+	display: block;
+}
+ul.circles#start {
+}
+ul.circles li {
+	position: relative;
+	float: left;
+	margin-right: 22px;
+	margin-bottom: 22px;
+	width: 200px;
+	height: 200px;
+	padding-left: 5px;
+	padding-top: 4px;
+}
+ul.circles li span {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 200px;
+	line-height: 200px;
+	background: url(../img/circle.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	
+}
+ul.circles#finish li {
+	position: absolute;
+	margin: 0;
+}
+ul.circles#finish li span {
+	background: url(../img/circle_finish.png);
+}
+ul.circles li.disabled span {
+	background: url(../img/circle_disabled.png);
+}
+ul.circles li img {
+	width: 190px;
+	height: 190px;
+}
+ul.circles li p {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	margin: 0;
+	padding: 0;
+	width: 190px;
+	height: 190px;
+}
+ul#text {
+	position: absolute;
+	right: 45px;
+	top: 45px;
+	width: 300px;
+	line-height: 1.8em;
+}
+ul#text li {
+	display: none;
+}
+ul#text li.active {
+	display: block;
+}
+ul#text li i {
+	background-color: white;
+	font-family: bold;
+	font-size: 20px; 
+	font-style: normal;
+}
+ul#text li strong, ul#text li b {
+	font-family: bold;
+}
+ul#text li.white {
+	color: white;
+}
+ul#text li.white i {
+	background-color: black;
+	color: white;
+}
+
+.content #sign {
+	position: absolute;
+	left:20px;
+	top: 20px;
+	display: none;
+}
+.content.done #sign {
+	display: block;
+}
+.content.done ul#text li {
+	display: none !important;	
+}
+.content.done ul#text li.result {
+	display: block !important;	
+}
+.content.done ul#finish {
+	display: none;	
+}
+
+body.centrala .content {
+	background-image: url(../img/centrala/img.png);
+}
+body.centrala .content.done {
+	background-image: url(../img/centrala/foto.jpg);
+	background-position: left center;
+}
+body.chram .content {
+	background-image: url(../img/chram/img.png);
+	background-position: center 200px;
+}
+body.chram .content.done {
+	background-image: url(../img/chram/foto.jpg);
+	background-position: left center;
+}
+body.katedrala .content {
+	background-image: url(../img/katedrala/img.png);
+	background-size: auto 90%;
+}
+body.katedrala .content.done {
+	background-image: url(../img/katedrala/foto.jpg);
+	background-position: center -120px;
+	background-size: cover;
+}
+body.portal .content {
+	background-image: url(../img/portal/img.png);
+	background-size: auto 90%;
+}
+body.portal .content.done {
+	background-image: url(../img/portal/foto.jpg);
+	background-position: center center;
+}
+
+body.rotunda .content {
+	background-image: url(../img/rotunda/img.png);
+	background-size: auto 90%;
+}
+body.rotunda .content.done {
+	background-image: url(../img/rotunda/foto.jpg);
+	background-position: center center;
+}
+
+body.directory img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1920px;
+	height: 1080px;
+}
+body.directory ul#directory li {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	/*background: rgba(255,0,0,0.3);*/
+}
+body.directory ul#directory li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+body.directory #close {
+	position: absolute;
+	z-index: 1;
+	width: auto;
+	height: auto;
+	left: 50px;
+	top: 50px;
+	border-radius: 68px;
+	background: white;
+}

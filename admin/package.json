@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^35.2.1",
+    "jquery-ui": "^1.13.2"
+  }
+}

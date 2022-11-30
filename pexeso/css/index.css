@@ -1,0 +1,53 @@
+#pexeso_data {
+    display: none;
+}
+
+#pexeso_app {
+    position: absolute;
+    top: 150px;
+    left: calc(50% - (1290px / 2));
+    visibility: hidden;
+    width: 1290px;
+    height: 650px !important;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 10px solid transparent;
+    border-left: 10px solid transparent;
+}
+
+#pexeso_app img {
+    width: 310px;
+    height: 310px;
+    max-width: 310px;
+}
+
+.quizy-mg-item-top {
+    background-size: 100% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    /* background-color: #ec6b25 !important; */
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    display: none;
+    font-size: 50px;
+    color: green;
+}
+
+#pexeso_timeend {
+    color: red;
+}
+#pexeso_timer {
+    color: black;
+    font-size: 50px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}

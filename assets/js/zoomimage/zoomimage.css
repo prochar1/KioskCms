@@ -1,0 +1,97 @@
+.zoomimage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    text-align: center;
+    z-index: 999999999999;
+    background: rgba(0, 0, 0, .9);
+}
+
+.zoomimage div {
+    position: absolute;
+    box-sizing: border-box;
+    left: 50px;
+    top: 50px;
+    height: calc(100% - 100px);
+    width: calc(100% - 100px);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.zoomimage_close {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    color: white;
+    text-transform: lowercase;
+    width: 80px;
+    height: 80px;
+    line-height: 70px;
+    border: 1px solid white;
+    border-radius: 80px;
+    /* border-radius: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoomimage_close::after {
+    display: inline-block;
+    content: "\00d7";
+    font-size: 70px;
+    margin-top: -5px;
+    /* This will render the 'X' */
+}
+
+.zoomimage_controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999999999999999;
+}
+
+.zoomimage_plus,
+.zoomimage_minus {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    color: white;
+    text-transform: lowercase;
+    width: 80px;
+    height: 80px;
+    line-height: 70px;
+    font-size: 80px;
+    border-radius: 80px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoomimage_minus {
+    left: 150px;
+    line-height: 55px;
+}
+
+.zoomimage_caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 999999999999;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+    line-height: 1.3em;
+}
+
+.zoomimage_caption *:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+}
