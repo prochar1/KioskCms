@@ -48,7 +48,6 @@ if (is_array($_POST) and count($_POST)) {
                 <br />
                 <h2>Pages</h2>
                 <br />
-
                 <?= $page->renderList(); ?>
 
             </div>
