@@ -30,7 +30,6 @@ if (is_array($_POST) and count($_POST)) {
     <link rel="stylesheet" href="vendor\twbs\bootstrap\dist\css\bootstrap.min.css">
     <style>
         .ck-editor__editable[role="textbox"] {
-            /* editing area */
             min-height: 15em;
         }
     </style>
