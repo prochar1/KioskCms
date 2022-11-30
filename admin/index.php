@@ -58,7 +58,7 @@ if (is_array($_POST) and count($_POST)) {
 
                 <h2>
                     <?php if (isset($_GET['id'])) { ?>
-                        Edit page <a href="" class="btn btn-outline-secondary btn-sm">Create new</a>
+                        Edit page <a href="/" class="btn btn-outline-secondary btn-sm">Create new</a>
                     <?php } else { ?>
                         Create page
                     <?php } ?>
