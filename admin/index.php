@@ -1,5 +1,6 @@
 <?php
-include "classes/page.class.php";
+include "classes/models/db.php";
+include "classes/controllers/page.php";
 
 $page = new Page(isset($_GET['id']) ? $_GET['id'] : null);
 
@@ -38,31 +39,22 @@ if (is_array($_POST) and count($_POST)) {
 <body>
     <div class="container-fluid">
 
-        <br />
-
-        <h1><a class="btn btn-success active" href="<?= parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH); ?>">KioskCMS</a></h1>
-
         <div class="row">
 
-            <div class="col-4">
+            <div class="col-2">
                 <br />
-                <h2>Pages</h2>
-                <br />
+
                 <?= $page->renderList(); ?>
 
             </div>
 
-            <div class="col-8">
+            <div class="col-10">
 
                 <br />
 
-                <h2>
-                    <?php if (isset($_GET['id'])) { ?>
-                        Edit page <a href="/" class="btn btn-outline-secondary btn-sm">Create new</a>
-                    <?php } else { ?>
-                        Create page
-                    <?php } ?>
-                </h2>
+                <?php if (isset($_GET['id'])) { ?>
+                    <a href="./" class="btn btn-outline-secondary btn-sm">Create new</a><br />
+                <?php } ?>
 
 
 
@@ -106,7 +98,7 @@ if (is_array($_POST) and count($_POST)) {
                             <a id="uploadfiles" class="btn btn-primary" style="display: none;" href="javascript:;" data-allow-extensions="images">Upload files</a>
                             <span id="filelist"></span>
                             <span id="console"></span>
-                            <div id="uploadedlist" class="row row-cols-1 row-cols-md-3 g-4">
+                            <div id="uploadedlist" class="row row-cols-1 row-cols-md-6 g-4">
                                 <?php if (is_array($page->images) and count($page->images)) {
                                     foreach ($page->images as $key => $file) {
                                         $file_description = '';
@@ -133,7 +125,6 @@ if (is_array($_POST) and count($_POST)) {
                             </div>
                         </span>
                     </p>
-                    <?= $page->images ?>
 
                     <p>
                         <label class="form-label">Video</label><br />
@@ -161,7 +152,6 @@ if (is_array($_POST) and count($_POST)) {
                             </div>
                         </span>
                     </p>
-                    <?= $page->video ?>
 
                     <p>
                         <label class="form-label">PDF</label><br />

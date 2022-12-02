@@ -106,9 +106,9 @@ if (document.querySelector('#upload')) {
                             <div class="card-body">
                             <p class="card-text">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" name="files_descriptions[]"></textarea>
+                            <textarea class="form-control" name="images_descriptions[]"></textarea>
                             </p>
-                            <input type="hidden" name="files[]" value="${result.response}">
+                            <input type="hidden" name="images[]" value="${result.response}">
                             </div>
                             <div class="card-footer text-end">
                                 <button type="button" class="btn-sm btn-close" onclick="removeFile(event)" aria-label="Close"></button>
@@ -123,7 +123,7 @@ if (document.querySelector('#upload')) {
                         <div class="col">
                             <div class="card h-100">
                                 <video class="card-img-top" src="${result.response}" controls></video>
-                                <input type="hidden" name="files[]" value="${result.response}">
+                                <input type="hidden" name="video[]" value="${result.response}">
                                 <div class="card-footer d-flex justify-content-between align-items-center">
                                     <a target="_blank" class="text-decoration-none" href="${result.response}">${basename(result.response)}</a>
                                     <button type="button" class="btn-sm btn-close" onclick="removeFile(event)" aria-label="Close"></button>
@@ -137,7 +137,7 @@ if (document.querySelector('#upload')) {
                     output = `
                         <div class="col">
                             <div class="card h-100">
-                                <input type="hidden" name="files[]" value="${result.response}">
+                                <input type="hidden" name="pdf[]" value="${result.response}">
                                 <div class="card-footer d-flex justify-content-between align-items-center">
                                     <a target="_blank" class="text-decoration-none" href="${result.response}">${basename(result.response)}</a>
                                     <button type="button" class="btn-sm btn-close" onclick="removeFile(event)" aria-label="Close"></button>
