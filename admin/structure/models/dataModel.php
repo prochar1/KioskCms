@@ -1,8 +1,8 @@
-<?php class Data
+<?php class DataModel
 {
 
     protected $id = 0;
-    private $data = [];
+    protected $data = [];
     private $dataFile = '../data/data.json';
 
     public function __construct($id = null)
@@ -14,7 +14,7 @@
         $this->data = $this->getData();
     }
 
-    private function getData()
+    public function getData()
     {
         $data = json_decode(file_get_contents($this->dataFile), true);
         if ($this->id) return $data[$this->id];
@@ -60,7 +60,7 @@
         }
     }
 
-    private function sorting($parent = 0)
+    public function sorting($parent = 0)
     {
         $a = [];
         foreach ($this->data as $row) {
@@ -83,7 +83,7 @@
 
     public function execute()
     {
-        if (!$this->data['submit']) return;
+        if (!isset($this->data['submit'])) return;
         if (!$this->id) {
             return $this->insert();
         } else {

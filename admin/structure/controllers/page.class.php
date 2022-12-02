@@ -1,4 +1,4 @@
-<?php class Page
+<?php class PageController
 {
 
     public $data = [];
@@ -12,116 +12,11 @@
     public $type = 'description';
     public $parent = '0';
     public $order = '0';
-    private $dataFile = '../data/data.json';
     public $uploadFolder = '';
 
-    function __construct($id = null)
+    function __construct()
     {
-        if (!file_exists($this->dataFile)) return;
-        $data = json_decode(file_get_contents($this->dataFile), true);
-        $this->data = $data;
-
         $this->uploadFolder = date('YmdHis') . '_' . mt_rand(10000, 99999);
-
-        if (!empty($id)) {
-            $item = $this->item();
-            if (isset($item['title'])) $this->title = $item['title'];
-            if (isset($item['description'])) $this->description = $item['description'];
-            if (isset($item['video'])) $this->video = $item['video'];
-            if (isset($item['pdf'])) $this->pdf = $item['pdf'];
-            if (isset($item['list'])) $this->list = $item['list'];
-            if (isset($item['images'])) $this->images = $item['images'];
-            if (isset($item['images_descriptions'])) $this->images_descriptions = $item['images_descriptions'];
-            if (isset($item['parent'])) $this->parent = $item['parent'];
-            if (isset($item['order'])) $this->order = $item['order'];
-            if (isset($item['uploadFolder'])) $this->uploadFolder = $item['uploadFolder'];
-        }
-    }
-
-    function getMaxId()
-    {
-        if (!is_array($this->data)) return 0;
-        if (empty(array_keys($this->data))) return 0;
-        return max(array_keys($this->data));
-    }
-
-    function item()
-    {
-        if (is_array($this->data) and isset($this->data[$_GET['id']])) {
-            return $this->data[$_GET['id']];
-        }
-        return null;
-    }
-
-    function insert()
-    {
-        if (!empty($_POST['id'])) return;
-        $id = $this->getMaxId() + 1;
-        $this->data[$id] = $_POST;
-        $this->data[$id]['id'] = strval($id);
-        $this->type = $_POST['type'];
-        $this->save();
-        $this->redirect();
-    }
-
-    function update()
-    {
-        if (empty($_POST['id'])) return;
-        $this->data[$_POST['id']] = $_POST;
-        $this->type = $_POST['type'];
-        $this->save();
-        $this->redirect();
-    }
-
-    function delete()
-    {
-        if (empty($_POST['id'])) return;
-        $row['id'] = $_POST['id'];
-        if (is_array($this->data)) {
-            foreach ($this->data as $key => $row) {
-                if ($row['id'] == $_POST['id']) {
-                    unset($this->data[$row['id']]);
-                }
-            }
-        }
-        $this->save();
-        $this->redirect(true);
-    }
-
-    function sorting($parent = 0)
-    {
-        $a = [];
-        foreach ($this->data as $key => $row) {
-            if ($row['parent'] == $parent) {
-                $a[] = $row;
-            }
-        }
-        usort($a, function ($x, $y) {
-            return $x['order'] <=> $y['order'];
-        });
-        foreach ($a as $row) {
-            $a = array_merge($a, $this->sorting($row['id']));
-        }
-        $data = [];
-        foreach ($a as $row) {
-            $data[$row['id']] = $row;
-        }
-        return $data;
-    }
-
-    function save()
-    {
-        $data = $this->data;
-        $data = $this->sorting(0);
-        file_put_contents($this->dataFile, json_encode($data));
-    }
-
-    function redirect($toHome = false)
-    {
-        if ($toHome) {
-            header('Location:' . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
-        }
-        header('Location:' . $_SERVER["REQUEST_URI"]);
     }
 
     private function list($parent = "0", $isSublist = false)
@@ -130,11 +25,11 @@
         $data = $this->sorting($parent);
         $output = '';
         if (!$isSublist) $output .= '<ul class="list-group" id="list">' . "\r\n";
-        foreach ($data as $key => $row) {
+        foreach ($data as $row) {
             if ($row['parent'] == $parent) {
                 $active = '';
                 $class = '';
-                if (isset($_GET['id']) and $row['id'] == $_GET['id']) {
+                if ($this->id and $row['id'] == $this->id) {
                     $active = ' active';
                     $class = ' text-white';
                 }
@@ -161,6 +56,16 @@
     {
         return str_replace(' <span class="text-secondary">&#45;</span> ', '', $this->list());
     }
+
+    function redirect($toHome = false)
+    {
+        if ($toHome) {
+            header('Location:' . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
+        }
+        header('Location:' . $_SERVER["REQUEST_URI"]);
+    }
+
+
 
     function selectBox($value, $parent = "0", $isSublist = false)
     {
